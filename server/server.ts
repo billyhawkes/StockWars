@@ -9,6 +9,9 @@ app.get("/", (req, res) => {
     res.send("Hello");
 });
 
+import stocksRouter from "./routes/stocks";
+app.use("/stocks", stocksRouter);
+
 app.listen(PORT, () => {
     console.log(`Server started on PORT: ${PORT}`);
 });
