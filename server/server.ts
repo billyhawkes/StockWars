@@ -4,6 +4,9 @@ const app = express();
 // Variables
 const PORT = process.env.PORT || 5000;
 
+// Middleware
+app.use(express.json());
+
 // ROUTES //
 app.get("/", (req, res) => {
     res.send("Hello");

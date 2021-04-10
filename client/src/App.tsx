@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Components
 import Header from "./Header";
 import Buy from "./pages/Buy";
+import Portfolio from "./pages/Portfolio";
 
 function App() {
     return (
@@ -14,6 +15,9 @@ function App() {
             <Switch>
                 <Route path="/buy">
                     <Buy />
+                </Route>
+                <Route path="/portfolio">
+                    <Portfolio />
                 </Route>
             </Switch>
         </Router>

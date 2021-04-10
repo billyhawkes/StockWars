@@ -26,6 +26,7 @@ const Header = () => {
             <nav>
                 <Link to="/">Home</Link>
                 <Link to="/buy">Buy</Link>
+                <Link to="/portfolio">Portfolio</Link>
             </nav>
         </StyledHeader>
     );
