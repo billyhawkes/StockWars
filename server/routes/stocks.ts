@@ -19,13 +19,29 @@ router.get("/", async (req, res) => {
 // Buy (Post) one stock
 router.post("/", async (req, res) => {
     const { symbol, amount } = req.body;
-    const cost = cost_from_symbol(symbol);
 
-    console.log(symbol, amount, cost);
-    const stock = await pool.query(
-        `INSERT INTO stocks (symbol, amount, cost) VALUES (${symbol}, ${amount}, ${100})`
-    );
-    res.json(stock);
+    try {
+        // Error Checking
+        if (!symbol || !amount)
+            return res.status(400).json({ message: "Please fill all fields" });
+        if (symbol.length > 4 || symbol.length < 1)
+            return res
+                .status(400)
+                .json({ message: "Symbol must be 1-4 chars" });
+
+        // Get Cost
+        const cost = await cost_from_symbol(symbol);
+
+        // Buy Stock with (cost, symbol, and amount)
+        const stock = await pool.query(
+            `INSERT INTO stocks (symbol, amount, cost) VALUES ('${symbol}', ${amount}, ${cost})`
+        );
+
+        // Return stock
+        res.json(stock);
+    } catch (err) {
+        return res.status(500).json({ message: "Internal Server Error" });
+    }
 });
 
 export default router;

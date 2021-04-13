@@ -1,18 +1,26 @@
 // Imports
-import axios from "axios";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
+import Error from "../common/Error";
+import { buyStock } from "./api";
 
 const Buy = () => {
-    const [symbol, setSymbol] = useState<Stock["symbol"]>();
-    const [amount, setAmount] = useState<Stock["amount"]>();
+    // Form State
+    const [symbol, setSymbol] = useState<Stock["symbol"] | undefined>();
+    const [amount, setAmount] = useState<Stock["amount"] | undefined>();
+    // Buy Error
+    const [error, setError] = useState<string | null>();
 
     // Buys stock
-    const handleBuy = async () => {
-        const res = await axios.post("/stocks", { symbol, amount });
-        console.log(res);
+    const handleBuy = async (e: FormEvent) => {
+        e.preventDefault();
+        buyStock(symbol, amount).catch((err) => {
+            console.dir(err);
+            setError(err.response.data.message);
+        });
     };
     return (
         <form onSubmit={handleBuy}>
+            {error && <Error error={error} setError={setError} />}
             <label>
                 Stock
                 <input

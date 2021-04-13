@@ -1,11 +1,14 @@
+// Imports
+import cors from "cors";
 import express from "express";
 const app = express();
 
 // Variables
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 
 // ROUTES //
 app.get("/", (req, res) => {
