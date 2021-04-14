@@ -22,3 +22,14 @@ a {
     text-decoration: none;
     color: white;
 }
+
+/* Buttons */
+input[type="submit"],
+button {
+    cursor: pointer;
+    border: none;
+}
+input[type="submit"]:focus,
+button:focus {
+    outline: none;
+}

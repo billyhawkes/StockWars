@@ -4,10 +4,12 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Components
-import Header from "./Header";
-import Buy from "./pages/buy/Buy";
-import Portfolio from "./pages/portfolio/Portfolio";
-import Home from "./pages/home/Home";
+import Header from "./components/layout/Header";
+import Buy from "./components/pages/Buy";
+import Portfolio from "./components/pages/Portfolio";
+import Home from "./components/pages/Home";
+import Login from "./components/pages/auth/Login";
+import Register from "./components/pages/auth/Register";
 
 function App() {
     return (
@@ -22,6 +24,12 @@ function App() {
                 </Route>
                 <Route path="/portfolio">
                     <Portfolio />
+                </Route>
+                <Route path="/login">
+                    <Login />
+                </Route>
+                <Route path="/register">
+                    <Register />
                 </Route>
             </Switch>
         </Router>

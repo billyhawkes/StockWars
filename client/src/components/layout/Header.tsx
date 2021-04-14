@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+// Styling
 const StyledHeader = styled.header`
     display: flex;
     justify-content: space-between;
@@ -19,6 +20,7 @@ const StyledHeader = styled.header`
     }
 `;
 
+// Component
 const Header = () => {
     return (
         <StyledHeader>
@@ -27,6 +29,8 @@ const Header = () => {
                 <Link to="/">Home</Link>
                 <Link to="/buy">Buy</Link>
                 <Link to="/portfolio">Portfolio</Link>
+                <Link to="/login">Login</Link>
+                <Link to="/register">Register</Link>
             </nav>
         </StyledHeader>
     );
