@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 // Utils
-import { getAllStocks } from "../api";
+import { getAllStocks } from "../../utils/api";
 
 // Styles
 const StyledStockTable = styled.table`
@@ -22,11 +22,8 @@ const StyledStockTable = styled.table`
     }
 `;
 
-// Props
-interface Props {}
-
 // Component
-const StockTable = (props: Props) => {
+const StockTable = () => {
     const [stocks, setStocks] = useState<Stock[]>([]);
 
     // Gets all stocks on load

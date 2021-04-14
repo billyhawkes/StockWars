@@ -1,5 +1,6 @@
 // Imports
 import React from "react";
+import PriceChecker from "../../common/PriceChecker";
 import StockTable from "./StockTable";
 
 // Component
@@ -8,6 +9,7 @@ const Portfolio = () => {
         <div>
             <h2>Portfolio</h2>
             <StockTable />
+            <PriceChecker />
         </div>
     );
 };

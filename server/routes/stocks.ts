@@ -44,4 +44,15 @@ router.post("/", async (req, res) => {
     }
 });
 
+router.get("/price/:q", async (req, res) => {
+    const symbol = req.params.q;
+    try {
+        // Get Cost
+        const cost = await cost_from_symbol(symbol);
+        res.json(cost);
+    } catch {
+        return res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
 export default router;

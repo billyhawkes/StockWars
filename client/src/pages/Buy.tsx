@@ -1,7 +1,7 @@
 // Imports
 import React, { FormEvent, useState } from "react";
 import Error from "../common/Error";
-import { buyStock } from "./api";
+import { buyStock } from "../utils/api";
 
 const Buy = () => {
     // Form State
