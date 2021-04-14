@@ -10,6 +10,7 @@ const Form = styled.form`
     // Title
     h3 {
         text-align: center;
+        margin-bottom: 1rem;
     }
     // Inputs
     label {
@@ -17,7 +18,7 @@ const Form = styled.form`
         display: flex;
         flex-direction: column;
         input {
-            margin-top: 1rem;
+            margin-top: 0.5rem;
             padding: 0.2rem;
         }
     }
@@ -25,7 +26,7 @@ const Form = styled.form`
     input[type="submit"] {
         margin-top: 1rem;
         border-radius: 0.3rem;
-        background-color: #2d9cdb;
+        background-color: var(--secondary-color);
         color: white;
         padding: 0.5rem;
         font-weight: bold;

@@ -1,7 +1,7 @@
 // Import
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 // Styling
 const StyledHeader = styled.header`
@@ -17,6 +17,11 @@ const StyledHeader = styled.header`
         a {
             margin-right: 2rem;
         }
+        a.active {
+            background-color: var(--secondary-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.3rem;
+        }
     }
 `;
 
@@ -26,11 +31,24 @@ const Header = () => {
         <StyledHeader>
             <h1>Stock Wars</h1>
             <nav>
-                <Link to="/">Home</Link>
-                <Link to="/buy">Buy</Link>
-                <Link to="/portfolio">Portfolio</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
+                <NavLink exact to="/" activeClassName="active">
+                    Home
+                </NavLink>
+                <NavLink exact to="/buy" activeClassName="active">
+                    Buy
+                </NavLink>
+                <NavLink exact to="/sell" activeClassName="active">
+                    Sell
+                </NavLink>
+                <NavLink exact to="/portfolio" activeClassName="active">
+                    Portfolio
+                </NavLink>
+                <NavLink exact to="/login" activeClassName="active">
+                    Login
+                </NavLink>
+                <NavLink exact to="/register" activeClassName="active">
+                    Register
+                </NavLink>
             </nav>
         </StyledHeader>
     );

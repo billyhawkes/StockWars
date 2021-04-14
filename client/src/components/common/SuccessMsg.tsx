@@ -3,14 +3,14 @@ import React from "react";
 import styled from "styled-components";
 
 // Styling
-const StyledError = styled.div`
+const StyledSuccessMsg = styled.div`
     position: relative;
     display: inline-block;
     font-size: 0.8rem;
     border-radius: 0.5rem;
     padding: 0.5rem 2rem 0.5rem 0.5rem;
-    background-color: #f17575;
-    color: #af4c4c;
+    background-color: #75ce88;
+    color: #599749;
     // Close Button
     button {
         position: absolute;
@@ -19,26 +19,25 @@ const StyledError = styled.div`
         border: none;
         border-radius: 50%;
         background-color: transparent;
-        color: #af4c4c;
+        color: #599749;
         font-size: 0.8rem;
     }
 `;
 
 // Props
 interface Props {
-    error: string;
-    setError: React.Dispatch<React.SetStateAction<string>>;
+    successMsg: string;
+    setSuccessMsg: React.Dispatch<React.SetStateAction<string>>;
 }
 
 // Component
-const Error = ({ error, setError }: Props) => {
+const SuccessMsg = ({ successMsg, setSuccessMsg }: Props) => {
     return (
-        <StyledError>
-            <strong>Error! </strong>
-            {error}
-            <button onClick={() => setError("")}>&#128473;</button>
-        </StyledError>
+        <StyledSuccessMsg>
+            {successMsg}
+            <button onClick={() => setSuccessMsg("")}>&#128473;</button>
+        </StyledSuccessMsg>
     );
 };
 
-export default Error;
+export default SuccessMsg;

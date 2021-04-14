@@ -17,6 +17,8 @@ app.get("/", (req, res) => {
 
 import stocksRouter from "./routes/stocks";
 app.use("/stocks", stocksRouter);
+import authRouter from "./routes/auth";
+app.use("/auth", authRouter);
 
 app.listen(PORT, () => {
     console.log(`Server started on PORT: ${PORT}`);

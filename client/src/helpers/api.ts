@@ -13,7 +13,16 @@ export const buyStock = async (
     symbol: Stock["symbol"],
     amount: Stock["amount"]
 ) => {
-    const res = await axios.post("/stocks", { symbol, amount });
+    const res = await axios.post("/stocks/buy", { symbol, amount });
+    return res;
+};
+
+// Sell stock
+export const sellStock = async (
+    symbol: Stock["symbol"],
+    amount: Stock["amount"]
+) => {
+    const res = await axios.post("/stocks/sell", { symbol, amount });
     return res;
 };
 

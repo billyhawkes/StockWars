@@ -1,17 +1,16 @@
 // Imports
 import React, { FormEvent, useState } from "react";
 import styled from "styled-components";
-import { buyStock } from "../../helpers/api";
+import { sellStock } from "../../helpers/api";
 import Error from "../common/Error";
 import SuccessMsg from "../common/SuccessMsg";
 import Form from "../styling/Form";
 
-const StyledBuy = styled.div`
+const StyledSell = styled.div`
     width: 400px;
     margin: 3rem auto;
 `;
-
-const Buy = () => {
+const Sell = () => {
     // Form State
     const [symbol, setSymbol] = useState<Stock["symbol"]>();
     const [amount, setAmount] = useState<Stock["amount"]>(1);
@@ -20,11 +19,11 @@ const Buy = () => {
     const [successMsg, setSuccessMsg] = useState<string>("");
 
     // Handles buying stock
-    const handleBuy = async (e: FormEvent) => {
+    const handleSell = async (e: FormEvent) => {
         e.preventDefault();
 
         // Buy stock
-        buyStock(symbol, amount)
+        sellStock(symbol, amount)
             .then((res) => setSuccessMsg(res.data.message))
             .catch((err) => {
                 setError(err.response.data.message);
@@ -36,9 +35,9 @@ const Buy = () => {
         setError("");
     };
     return (
-        <StyledBuy>
-            <Form onSubmit={handleBuy}>
-                <h3>Buy</h3>
+        <StyledSell>
+            <Form onSubmit={handleSell}>
+                <h3>Sell</h3>
                 {successMsg && (
                     <SuccessMsg
                         successMsg={successMsg}
@@ -47,28 +46,26 @@ const Buy = () => {
                 )}
                 {error && <Error error={error} setError={setError} />}
                 <label>
-                    Stock
+                    Stock Symbol
                     <input
                         type="text"
-                        name="symbol"
-                        onChange={(e) => setSymbol(e.target.value)}
                         value={symbol}
+                        onChange={(e) => setSymbol(e.target.value)}
                     />
                 </label>
                 <label>
                     Amount
                     <input
-                        name="amount"
                         type="number"
                         onChange={(e) => setAmount(Number(e.target.value))}
                         value={amount}
                         min="1"
                     />
                 </label>
-                <input type="submit" value="Buy" />
+                <input type="submit" value="Sell" />
             </Form>
-        </StyledBuy>
+        </StyledSell>
     );
 };
 
-export default Buy;
+export default Sell;

@@ -3,13 +3,15 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-// Components
+// Layout
 import Header from "./components/layout/Header";
+// Pages
 import Buy from "./components/pages/Buy";
 import Portfolio from "./components/pages/Portfolio";
 import Home from "./components/pages/Home";
 import Login from "./components/pages/auth/Login";
 import Register from "./components/pages/auth/Register";
+import Sell from "./components/pages/Sell";
 
 function App() {
     return (
@@ -21,6 +23,9 @@ function App() {
                 </Route>
                 <Route path="/buy">
                     <Buy />
+                </Route>
+                <Route path="/sell">
+                    <Sell />
                 </Route>
                 <Route path="/portfolio">
                     <Portfolio />
