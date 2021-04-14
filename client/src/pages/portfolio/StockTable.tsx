@@ -7,6 +7,7 @@ import { getAllStocks } from "../../utils/api";
 
 // Styles
 const StyledStockTable = styled.table`
+    margin: auto;
     border-collapse: collapse;
     thead {
         background-color: var(--primary-color);

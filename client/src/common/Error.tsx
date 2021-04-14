@@ -6,20 +6,21 @@ import styled from "styled-components";
 const StyledError = styled.div`
     position: relative;
     display: inline-block;
+    font-size: 0.8rem;
     border-radius: 0.5rem;
     padding: 0.5rem 2rem 0.5rem 0.5rem;
     background-color: #f26666;
-    color: white;
+    color: #bd5555;
     // Close Button
     button {
         position: absolute;
         right: 0.5rem;
-        top: 13%;
+        top: 0.37rem;
         border: none;
         border-radius: 50%;
         background-color: transparent;
         color: #bd5555;
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 `;
 
