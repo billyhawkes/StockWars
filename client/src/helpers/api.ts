@@ -35,11 +35,12 @@ export const getPrice = async (symbol: Stock["symbol"]) => {
 
 // Login
 export const login = async (
-    user: User["email"] | User["username"],
+    identity: User["email"] | User["username"],
     password: User["password"]
 ) => {
-    const res = await axios.post("/auth/login", { user, password });
+    const res = await axios.post("/auth/login", { identity, password });
     const data = await res.data;
+    localStorage.setItem("auth-token", data.token);
     return data;
 };
 // Register
@@ -56,5 +57,6 @@ export const register = async (
         passwordCheck,
     });
     const data = await res.data;
+    localStorage.setItem("auth-token", data.token);
     return data;
 };

@@ -1,11 +1,15 @@
 // Import
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useContext, useState } from "react";
 import Form from "../../styling/Form";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
 // Utils
 import { login } from "../../../helpers/api";
+
+// Context
+import UserContext from "./UserContext";
+import Error from "../../common/Error";
 
 // Styling
 const StyledLogin = styled.div`
@@ -15,9 +19,14 @@ const StyledLogin = styled.div`
 
 // Component
 const Login = () => {
+    const { setUser } = useContext(UserContext);
     // Form State
-    const [user, setUser] = useState<User["username"] | User["email"]>("");
+    const [identity, setIdentity] = useState<User["username"] | User["email"]>(
+        ""
+    );
     const [password, setPassword] = useState<User["password"]>("");
+    // Error Message
+    const [error, setError] = useState<string>("");
 
     //History
     const history = useHistory();
@@ -27,20 +36,29 @@ const Login = () => {
         e.preventDefault();
 
         // Logs in user
-        login(user, password).then((res) => console.log(res));
-        history.push("/");
+        login(identity, password)
+            .then((res) => {
+                setUser({
+                    token: res.token,
+                    id: res.id,
+                    username: res.username,
+                });
+                history.push("/");
+            })
+            .catch((err) => setError(err.response.data.message));
     };
 
     return (
         <StyledLogin>
             <Form onSubmit={handleLogin}>
                 <h3>Login</h3>
+                {error && <Error error={error} setError={setError} />}
                 <label>
                     Username/Email
                     <input
                         type="text"
-                        onChange={(e) => setUser(e.target.value)}
-                        value={user}
+                        onChange={(e) => setIdentity(e.target.value)}
+                        value={identity}
                     />
                 </label>
                 <label>

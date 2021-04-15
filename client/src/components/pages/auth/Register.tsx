@@ -1,5 +1,5 @@
 // Imports
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useContext, useState } from "react";
 import Form from "../../styling/Form";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
@@ -8,6 +8,9 @@ import Error from "../../common/Error";
 // Utils
 import { register } from "../../../helpers/api";
 
+// Context
+import UserContext from "./UserContext";
+
 // Styling
 const StyledRegister = styled.div`
     width: 500px;
@@ -15,6 +18,7 @@ const StyledRegister = styled.div`
 `;
 
 const Register = () => {
+    const { setUser } = useContext(UserContext);
     // Form State
     const [username, setUserName] = useState<User["username"]>("");
     const [email, setEmail] = useState<User["email"]>("");
@@ -33,7 +37,11 @@ const Register = () => {
         // Logs in user
         register(username, email, password, passwordCheck)
             .then((res) => {
-                console.log(res);
+                setUser({
+                    token: res.token,
+                    id: res.id,
+                    username: res.username,
+                });
                 history.push("/");
             })
             .catch((err) => setError(err.response.data.message));

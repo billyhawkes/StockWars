@@ -1,7 +1,10 @@
 // Import
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+
+// Context
+import UserContext from "../pages/auth/UserContext";
 
 // Styling
 const StyledHeader = styled.header`
@@ -34,6 +37,9 @@ const StyledHeader = styled.header`
 
 // Component
 const Header = () => {
+    const { user, setUser } = useContext(UserContext);
+    const loggedIn = user.id && user.token && user.username;
+
     return (
         <StyledHeader>
             <h1>Stock Wars</h1>
@@ -51,12 +57,26 @@ const Header = () => {
                     Portfolio
                 </NavLink>
                 <div className="vertline"></div>
-                <NavLink exact to="/login" activeClassName="active">
-                    Login
-                </NavLink>
-                <NavLink exact to="/register" activeClassName="active">
-                    Register
-                </NavLink>
+                {loggedIn ? (
+                    <Link
+                        to="/"
+                        onClick={() => {
+                            setUser({});
+                            localStorage.setItem("auth-token", "");
+                        }}
+                    >
+                        Log Out
+                    </Link>
+                ) : (
+                    <>
+                        <NavLink exact to="/login" activeClassName="active">
+                            Login
+                        </NavLink>
+                        <NavLink exact to="/register" activeClassName="active">
+                            Register
+                        </NavLink>
+                    </>
+                )}
             </nav>
         </StyledHeader>
     );

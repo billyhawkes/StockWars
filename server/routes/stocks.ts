@@ -98,10 +98,6 @@ router.post("/sell", async (req, res) => {
         console.log(err);
         return res.status(500).json({ message: "Internal Server Error" });
     }
-
-    // Check if you have enough to sell amount
-    // If amount = amount owned, remove row
-    // else, change amount to amount owned - amount
 });
 
 export default router;
