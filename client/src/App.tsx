@@ -21,7 +21,6 @@ import { setupAuth } from "./helpers/auth";
 function App() {
     // User Context state
     const [user, setUser] = useState<ClientUser>({
-        token: undefined,
         id: undefined,
         username: undefined,
     });
@@ -29,8 +28,8 @@ function App() {
     useEffect(() => {
         setupAuth().then((res) => {
             if (res) {
+                console.log(res);
                 setUser({
-                    token: res.token,
                     id: res.id,
                     username: res.username,
                 });

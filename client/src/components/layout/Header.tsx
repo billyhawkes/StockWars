@@ -1,5 +1,5 @@
 // Import
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { NavLink, Link } from "react-router-dom";
 
@@ -17,11 +17,11 @@ const StyledHeader = styled.header`
     color: white;
     nav {
         display: flex;
-        justify-content: space-between;
         align-items: center;
         height: 5rem;
-        width: 600px;
-        margin-right: 2rem;
+        * {
+            margin-right: 2rem;
+        }
         a.active {
             background-color: var(--secondary-color);
             padding: 0.4rem 0.8rem;
@@ -38,7 +38,11 @@ const StyledHeader = styled.header`
 // Component
 const Header = () => {
     const { user, setUser } = useContext(UserContext);
-    const loggedIn = user.id && user.token && user.username;
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        setLoggedIn(user.id && user.username);
+    }, [user]);
 
     return (
         <StyledHeader>
@@ -47,15 +51,19 @@ const Header = () => {
                 <NavLink exact to="/" activeClassName="active">
                     Home
                 </NavLink>
-                <NavLink exact to="/buy" activeClassName="active">
-                    Buy
-                </NavLink>
-                <NavLink exact to="/sell" activeClassName="active">
-                    Sell
-                </NavLink>
-                <NavLink exact to="/portfolio" activeClassName="active">
-                    Portfolio
-                </NavLink>
+                {loggedIn && (
+                    <>
+                        <NavLink exact to="/buy" activeClassName="active">
+                            Buy
+                        </NavLink>
+                        <NavLink exact to="/sell" activeClassName="active">
+                            Sell
+                        </NavLink>
+                        <NavLink exact to="/portfolio" activeClassName="active">
+                            Portfolio
+                        </NavLink>
+                    </>
+                )}
                 <div className="vertline"></div>
                 {loggedIn ? (
                     <Link

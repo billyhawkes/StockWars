@@ -13,7 +13,6 @@ interface User {
 }
 
 interface ClientUser {
-    token: string | undefined;
     id: number | undefined;
     username: string | undefined;
 }

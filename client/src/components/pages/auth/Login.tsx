@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
 // Utils
-import { login } from "../../../helpers/api";
+import { login } from "../../../helpers/auth";
 
 // Context
 import UserContext from "./UserContext";
@@ -39,7 +39,6 @@ const Login = () => {
         login(identity, password)
             .then((res) => {
                 setUser({
-                    token: res.token,
                     id: res.id,
                     username: res.username,
                 });

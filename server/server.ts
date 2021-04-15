@@ -19,6 +19,8 @@ import stocksRouter from "./routes/stocks";
 app.use("/stocks", stocksRouter);
 import authRouter from "./routes/auth";
 app.use("/auth", authRouter);
+import usersRouter from "./routes/users";
+app.use("/users", usersRouter);
 
 app.listen(PORT, () => {
     console.log(`Server started on PORT: ${PORT}`);

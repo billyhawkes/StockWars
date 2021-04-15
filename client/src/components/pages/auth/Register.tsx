@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import Error from "../../common/Error";
 
 // Utils
-import { register } from "../../../helpers/api";
+import { register } from "../../../helpers/auth";
 
 // Context
 import UserContext from "./UserContext";
@@ -38,7 +38,6 @@ const Register = () => {
         register(username, email, password, passwordCheck)
             .then((res) => {
                 setUser({
-                    token: res.token,
                     id: res.id,
                     username: res.username,
                 });

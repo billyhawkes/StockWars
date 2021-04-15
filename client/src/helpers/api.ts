@@ -3,7 +3,11 @@ import axios from "axios";
 
 // Gets all stocks
 export const getAllStocks = async () => {
-    const res = await axios.get("/stocks");
+    const res = await axios.get("/stocks", {
+        headers: {
+            "auth-token": localStorage.getItem("auth-token"),
+        },
+    });
     const data = await res.data;
     return data;
 };
@@ -13,7 +17,15 @@ export const buyStock = async (
     symbol: Stock["symbol"],
     amount: Stock["amount"]
 ) => {
-    const res = await axios.post("/stocks/buy", { symbol, amount });
+    const res = await axios.post(
+        "/stocks/buy",
+        { symbol, amount },
+        {
+            headers: {
+                "auth-token": localStorage.getItem("auth-token"),
+            },
+        }
+    );
     return res;
 };
 
@@ -22,7 +34,16 @@ export const sellStock = async (
     symbol: Stock["symbol"],
     amount: Stock["amount"]
 ) => {
-    const res = await axios.post("/stocks/sell", { symbol, amount });
+    const res = await axios.post(
+        "/stocks/sell",
+        { symbol, amount },
+
+        {
+            headers: {
+                "auth-token": localStorage.getItem("auth-token"),
+            },
+        }
+    );
     return res;
 };
 
@@ -33,30 +54,11 @@ export const getPrice = async (symbol: Stock["symbol"]) => {
     return price;
 };
 
-// Login
-export const login = async (
-    identity: User["email"] | User["username"],
-    password: User["password"]
-) => {
-    const res = await axios.post("/auth/login", { identity, password });
-    const data = await res.data;
-    localStorage.setItem("auth-token", data.token);
-    return data;
-};
-// Register
-export const register = async (
-    username: User["username"],
-    email: User["email"],
-    password: User["password"],
-    passwordCheck: User["password"]
-) => {
-    const res = await axios.post("/auth/register", {
-        username,
-        email,
-        password,
-        passwordCheck,
+// Gets user info (ex. Cash)
+export const getUserInfo = async () => {
+    const res = await axios.get("/users", {
+        headers: { "auth-token": localStorage.getItem("auth-token") },
     });
     const data = await res.data;
-    localStorage.setItem("auth-token", data.token);
     return data;
 };

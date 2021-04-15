@@ -47,7 +47,7 @@ const Buy = () => {
                 )}
                 {error && <Error error={error} setError={setError} />}
                 <label>
-                    Stock
+                    Stock Symbol
                     <input
                         type="text"
                         name="symbol"
