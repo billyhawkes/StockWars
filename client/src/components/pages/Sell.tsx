@@ -24,15 +24,16 @@ const Sell = () => {
 
         // Buy stock
         sellStock(symbol, amount)
-            .then((res) => setSuccessMsg(res.data.message))
+            .then((res) => {
+                setSuccessMsg(res.data.message);
+                // Reset form
+                setSymbol("");
+                setAmount(1);
+                setError("");
+            })
             .catch((err) => {
                 setError(err.response.data.message);
             });
-
-        // Reset form
-        setSymbol("");
-        setAmount(1);
-        setError("");
     };
     return (
         <StyledSell>
