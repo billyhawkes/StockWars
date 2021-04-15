@@ -5,3 +5,9 @@ interface Stock {
     cost: string;
     date_time: string;
 }
+
+interface User {
+    username: string;
+    email: string;
+    password: string;
+}

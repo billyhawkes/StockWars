@@ -32,3 +32,29 @@ export const getPrice = async (symbol: Stock["symbol"]) => {
     const price = await res.data;
     return price;
 };
+
+// Login
+export const login = async (
+    user: User["email"] | User["username"],
+    password: User["password"]
+) => {
+    const res = await axios.post("/auth/login", { user, password });
+    const data = await res.data;
+    return data;
+};
+// Register
+export const register = async (
+    username: User["username"],
+    email: User["email"],
+    password: User["password"],
+    passwordCheck: User["password"]
+) => {
+    const res = await axios.post("/auth/register", {
+        username,
+        email,
+        password,
+        passwordCheck,
+    });
+    const data = await res.data;
+    return data;
+};

@@ -12,16 +12,23 @@ const StyledHeader = styled.header`
     height: 5rem;
     background-color: var(--primary-color);
     color: white;
-
     nav {
-        a {
-            margin-right: 2rem;
-        }
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 5rem;
+        width: 600px;
+        margin-right: 2rem;
         a.active {
             background-color: var(--secondary-color);
             padding: 0.4rem 0.8rem;
             border-radius: 0.3rem;
         }
+    }
+    .vertline {
+        height: 50%;
+        width: 2px;
+        background-color: white;
     }
 `;
 
@@ -43,6 +50,7 @@ const Header = () => {
                 <NavLink exact to="/portfolio" activeClassName="active">
                     Portfolio
                 </NavLink>
+                <div className="vertline"></div>
                 <NavLink exact to="/login" activeClassName="active">
                     Login
                 </NavLink>
