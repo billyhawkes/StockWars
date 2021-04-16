@@ -14,11 +14,22 @@ import { cost_from_symbol } from "../helpers/stockHelpers";
 // Routes //
 
 // Get all stocks
-router.get("/", auth, async (req, res) => {
+router.get("/history", auth, async (req, res) => {
     const { userID } = req.body;
     try {
         const stocks = await pool.query(
             `SELECT * FROM stocks WHERE user_id=${userID}`
+        );
+        res.json(stocks.rows);
+    } catch (err) {
+        return res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+router.get("/shares", auth, async (req, res) => {
+    const { userID } = req.body;
+    try {
+        const stocks = await pool.query(
+            `SELECT SUM(amount), symbol FROM stocks WHERE user_id=${userID} GROUP BY symbol`
         );
         res.json(stocks.rows);
     } catch (err) {

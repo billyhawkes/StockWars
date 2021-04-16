@@ -8,7 +8,7 @@ import Header from "./components/layout/Header";
 
 // Pages
 import Buy from "./components/pages/Buy";
-import Portfolio from "./components/pages/Portfolio";
+import Portfolio from "./components/pages/portfolio/Portfolio";
 import Home from "./components/pages/home/Home";
 import Login from "./components/pages/auth/Login";
 import Register from "./components/pages/auth/Register";

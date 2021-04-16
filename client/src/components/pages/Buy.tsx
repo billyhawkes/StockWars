@@ -13,7 +13,7 @@ const StyledBuy = styled.div`
 
 const Buy = () => {
     // Form State
-    const [symbol, setSymbol] = useState<Stock["symbol"]>();
+    const [symbol, setSymbol] = useState<Stock["symbol"]>("");
     const [amount, setAmount] = useState<Stock["amount"]>(1);
     // Buy Error/Success
     const [error, setError] = useState<string>("");

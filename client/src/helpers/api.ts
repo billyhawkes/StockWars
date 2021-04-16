@@ -1,9 +1,20 @@
 // Imports
 import axios from "axios";
 
+// Portfolio //
 // Gets all stocks
-export const getAllStocks = async () => {
-    const res = await axios.get("/stocks", {
+export const getStockHistory = async () => {
+    const res = await axios.get("/stocks/history", {
+        headers: {
+            "auth-token": localStorage.getItem("auth-token"),
+        },
+    });
+    const data = await res.data;
+    return data;
+};
+// Gets all stocks
+export const getStockShares = async () => {
+    const res = await axios.get("/stocks/shares", {
         headers: {
             "auth-token": localStorage.getItem("auth-token"),
         },
@@ -12,6 +23,7 @@ export const getAllStocks = async () => {
     return data;
 };
 
+// Buy //
 // Buys stock
 export const buyStock = async (
     symbol: Stock["symbol"],
@@ -29,6 +41,7 @@ export const buyStock = async (
     return res;
 };
 
+// Sell //
 // Sell stock
 export const sellStock = async (
     symbol: Stock["symbol"],
@@ -47,13 +60,7 @@ export const sellStock = async (
     return res;
 };
 
-// Gets price for one stock
-export const getPrice = async (symbol: Stock["symbol"]) => {
-    const res = await axios.get(`/stocks/price/${symbol}`);
-    const price = await res.data;
-    return price;
-};
-
+// Home //
 // Gets user info (ex. Cash)
 export const getUserInfo = async () => {
     const res = await axios.get("/users", {
@@ -61,4 +68,12 @@ export const getUserInfo = async () => {
     });
     const data = await res.data;
     return data;
+};
+
+// Other //
+// Gets price for one stock
+export const getPrice = async (symbol: Stock["symbol"]) => {
+    const res = await axios.get(`/stocks/price/${symbol}`);
+    const price = await res.data;
+    return price;
 };
