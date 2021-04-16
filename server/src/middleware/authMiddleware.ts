@@ -1,7 +1,5 @@
 // Imports
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-dotenv.config();
 
 export const auth = async (req: any, res: any, next: any) => {
     const token = req.header("auth-token");
@@ -14,11 +12,14 @@ export const auth = async (req: any, res: any, next: any) => {
 
     // Verify token
     jwt.verify(token, `${process.env.JWT_SECRET}`, (err: any, decoded: any) => {
-        if (err)
+        if (err) {
             return res.status(401).json({
                 message: "Authorization Denied. Token Verification Error",
             });
-        if (decoded) req.body.userID = decoded.id;
+        }
+        if (decoded) {
+            req.body.userID = decoded.id;
+        }
     });
 
     next();

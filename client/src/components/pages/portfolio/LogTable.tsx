@@ -9,7 +9,9 @@ const LogTable = () => {
 
     // Gets all stocks on load
     useEffect(() => {
-        getStockHistory().then((stockList: Stock[]) => setStocks(stockList));
+        getStockHistory().then((stockList: Stock[]) => {
+            setStocks(stockList);
+        });
     }, []);
 
     return (

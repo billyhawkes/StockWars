@@ -1,7 +1,6 @@
 // Import
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { getUserInfo } from "../../../helpers/api";
 import UserContext from "../auth/UserContext";
 import Profile from "./Profile";
 

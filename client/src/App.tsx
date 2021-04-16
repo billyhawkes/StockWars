@@ -28,7 +28,6 @@ function App() {
     useEffect(() => {
         setupAuth().then((res) => {
             if (res) {
-                console.log(res);
                 setUser({
                     id: res.id,
                     username: res.username,

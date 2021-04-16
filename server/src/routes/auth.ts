@@ -2,8 +2,6 @@
 import express from "express";
 const router = express.Router();
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-dotenv.config();
 import pool from "../db/db";
 import bcrypt from "bcrypt";
 import { auth } from "../middleware/authMiddleware";
@@ -87,7 +85,7 @@ router.post("/register", async (req, res) => {
             `${process.env.JWT_SECRET}`
         );
 
-        res.json({
+        return res.json({
             token,
             id: addUser.rows[0].user_id,
             username: addUser.rows[0].username,

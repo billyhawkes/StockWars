@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { getUserInfo } from "../../../helpers/api";
 import UserContext from "../auth/UserContext";
 import styled from "styled-components";
-import { info } from "node:console";
 
 // Styling
 const StyledProfile = styled.div`

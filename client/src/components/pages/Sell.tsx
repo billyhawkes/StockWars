@@ -12,7 +12,7 @@ const StyledSell = styled.div`
 `;
 const Sell = () => {
     // Form State
-    const [symbol, setSymbol] = useState<Stock["symbol"]>();
+    const [symbol, setSymbol] = useState<Stock["symbol"]>("");
     const [amount, setAmount] = useState<Stock["amount"]>(1);
     // Buy Error/Success
     const [error, setError] = useState<string>("");
@@ -50,8 +50,8 @@ const Sell = () => {
                     Stock Symbol
                     <input
                         type="text"
-                        value={symbol}
                         onChange={(e) => setSymbol(e.target.value)}
+                        value={symbol}
                     />
                 </label>
                 <label>
