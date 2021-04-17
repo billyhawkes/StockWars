@@ -1,16 +1,14 @@
-// Imports
-
 // Model
-import { buyStock, costFromSymbol, sellStock } from "../models/stockModel";
+import { buyStock, costFromSymbol, sellStock } from "../models/StockModel";
 import {
     changeCash,
     getCash,
     getOwnedStocks,
     getSharesOfSymbol,
     getStockHistory,
-} from "../models/userModel";
+} from "../models/UserModel";
 
-class stockController {
+class StockController {
     static async Buy(req: any, res: any) {
         const { symbol, amount, userID } = req.body;
 
@@ -115,4 +113,4 @@ class stockController {
     }
 }
 
-export default stockController;
+export default StockController;

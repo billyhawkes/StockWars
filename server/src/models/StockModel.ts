@@ -5,7 +5,6 @@ import pool from "../db/db";
 
 // Gets cost of stock from symbol
 export const costFromSymbol = async (symbol: string) => {
-    console.log(symbol, process.env.STOCK_API_KEY);
     const res = await axios.get(
         `https://cloud.iexapis.com/stable/tops?token=${process.env.STOCK_API_KEY}&symbols=${symbol}`
     );

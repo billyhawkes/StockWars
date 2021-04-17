@@ -3,16 +3,16 @@ import express from "express";
 const router = express.Router();
 
 // Middleware
-import { auth } from "../middleware/authMiddleware";
+import { auth } from "../middleware";
 
 // Controller
-import stockController from "../controllers/stockController";
+import StockController from "../controllers/StockController";
 
 // Routes //
-router.get("/history", auth, stockController.History);
-router.get("/shares", auth, stockController.Shares);
-router.get("/price/:q", stockController.PriceOfStock);
-router.post("/buy", auth, stockController.Buy);
-router.post("/sell", auth, stockController.Sell);
+router.get("/history", auth, StockController.History);
+router.get("/shares", auth, StockController.Shares);
+router.get("/price/:q", StockController.PriceOfStock);
+router.post("/buy", auth, StockController.Buy);
+router.post("/sell", auth, StockController.Sell);
 
 export default router;

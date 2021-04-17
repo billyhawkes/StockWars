@@ -4,3 +4,10 @@ export interface Stock {
     cost: number | Promise<number>;
     date_time?: string;
 }
+
+export interface User {
+    username: string;
+    email: string;
+    password: string;
+    cash: number;
+}

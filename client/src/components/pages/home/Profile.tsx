@@ -21,7 +21,7 @@ const Profile = () => {
     const { user } = useContext(UserContext);
     const [info, setInfo] = useState({
         cash: undefined,
-        stockWorth: undefined,
+        stocksWorth: undefined,
         netWorth: undefined,
     });
 
@@ -37,7 +37,7 @@ const Profile = () => {
                 <strong>Cash:</strong> ${info.cash}
             </p>
             <p>
-                <strong>Stock:</strong> ${info.stockWorth}
+                <strong>Stock:</strong> ${info.stocksWorth}
             </p>
             <p>
                 <strong>Net Worth:</strong> ${info.netWorth}
