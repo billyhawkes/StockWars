@@ -42,3 +42,7 @@ export const getSharesOfSymbol = async (
     );
     return sharesOfSymbol.rows[0].sum;
 };
+
+export const getLeaderboard = async () => {
+    const leaderboard = await pool.query(`SELECT * FROM users`);
+};

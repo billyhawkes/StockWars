@@ -4,7 +4,7 @@ import axios from "axios";
 // Portfolio //
 // Gets all stocks
 export const getStockHistory = async () => {
-    const res = await axios.get("/stocks/history", {
+    const res = await axios.get("/users/history", {
         headers: {
             "auth-token": localStorage.getItem("auth-token"),
         },
@@ -14,7 +14,7 @@ export const getStockHistory = async () => {
 };
 // Gets all stocks
 export const getStockShares = async () => {
-    const res = await axios.get("/stocks/shares", {
+    const res = await axios.get("/users/shares", {
         headers: {
             "auth-token": localStorage.getItem("auth-token"),
         },

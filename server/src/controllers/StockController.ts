@@ -1,12 +1,6 @@
 // Model
 import { buyStock, costFromSymbol, sellStock } from "../models/StockModel";
-import {
-    changeCash,
-    getCash,
-    getOwnedStocks,
-    getSharesOfSymbol,
-    getStockHistory,
-} from "../models/UserModel";
+import { changeCash, getCash, getSharesOfSymbol } from "../models/UserModel";
 
 class StockController {
     static async Buy(req: any, res: any) {
@@ -38,24 +32,6 @@ class StockController {
             return res.json({
                 message: `Bought ${amount} shares of ${symbol}`,
             });
-        } catch (err) {
-            return res.status(500).json({ message: "Internal Server Error" });
-        }
-    }
-    static async Shares(req: any, res: any) {
-        const { userID } = req.body;
-        try {
-            const ownedStocks = await getOwnedStocks(userID);
-            return res.json(ownedStocks);
-        } catch (err) {
-            return res.status(500).json({ message: "Internal Server Error" });
-        }
-    }
-    static async History(req: any, res: any) {
-        const { userID } = req.body;
-        try {
-            const stockHistory = await getStockHistory(userID);
-            return res.json(stockHistory);
         } catch (err) {
             return res.status(500).json({ message: "Internal Server Error" });
         }

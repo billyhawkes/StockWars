@@ -10,9 +10,10 @@ import UserController from "../controllers/UserController";
 
 // Get your user info
 router.get("/", auth, UserController.Profile);
+router.get("/history", auth, UserController.History);
+router.get("/shares", auth, UserController.Shares);
+router.get("/leaderboard", UserController.Leaderboard);
 
 // Leaderboard
-// User Stock History
-// User Owned Shares
 
 export default router;

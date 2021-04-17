@@ -1,14 +1,16 @@
 // Imports
 import axios from "axios";
+import { json } from "express";
 import { Stock } from "..";
 import pool from "../db/db";
 
 // Gets cost of stock from symbol
 export const costFromSymbol = async (symbol: string) => {
     const res = await axios.get(
-        `https://cloud.iexapis.com/stable/tops?token=${process.env.STOCK_API_KEY}&symbols=${symbol}`
+        `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${process.env.ALPHA_API_KEY}?datatype=json`
     );
-    const cost = await res.data[0].lastSalePrice;
+    const cost = await JSON.parse(res.data);
+    console.log(cost);
     return cost;
 };
 
