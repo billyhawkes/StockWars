@@ -12,8 +12,5 @@ import UserController from "../controllers/UserController";
 router.get("/", auth, UserController.Profile);
 router.get("/history", auth, UserController.History);
 router.get("/shares", auth, UserController.Shares);
-router.get("/leaderboard", UserController.Leaderboard);
-
-// Leaderboard
 
 export default router;

@@ -17,9 +17,10 @@ class UserController {
                 const cost = await costFromSymbol(stock.symbol);
                 stocksWorth += cost * stock.sum;
             }
+            stocksWorth = Number(stocksWorth.toFixed(2));
 
             // Networth
-            const netWorth = cash + stocksWorth;
+            const netWorth = Number((cash + stocksWorth).toFixed(2));
 
             return res.json({ cash, stocksWorth, netWorth });
         } catch (err) {
@@ -44,7 +45,6 @@ class UserController {
             return res.status(500).json({ message: "Internal Server Error" });
         }
     }
-    static async Leaderboard(req: any, res: any) {}
 }
 
 export default UserController;

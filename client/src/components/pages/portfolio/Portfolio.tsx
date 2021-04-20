@@ -15,10 +15,10 @@ const StyledPortfolio = styled.div`
 const Portfolio = () => {
     return (
         <StyledPortfolio>
-            <h3>Log</h3>
-            <LogTable />
             <h3>Total Shares</h3>
             <SharesTable />
+            <h3>Log</h3>
+            <LogTable />
         </StyledPortfolio>
     );
 };

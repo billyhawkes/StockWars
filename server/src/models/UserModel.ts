@@ -19,7 +19,7 @@ export const changeCash = async (value: number, userID: number) => {
 // Get owned stocks (sum)
 export const getOwnedStocks = async (userID: number) => {
     const ownedStocks = await pool.query(
-        `SELECT SUM(amount), symbol FROM stocks WHERE user_id=${userID} GROUP BY symbol`
+        `SELECT SUM(amount), symbol FROM stocks WHERE user_id=${userID} GROUP BY symbol HAVING Sum(amount) > 0`
     );
     return ownedStocks.rows;
 };
@@ -41,8 +41,4 @@ export const getSharesOfSymbol = async (
         `SELECT SUM(amount) FROM stocks WHERE symbol='${symbol.toUpperCase()}' AND user_id=${userID}`
     );
     return sharesOfSymbol.rows[0].sum;
-};
-
-export const getLeaderboard = async () => {
-    const leaderboard = await pool.query(`SELECT * FROM users`);
 };
