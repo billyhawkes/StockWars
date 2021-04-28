@@ -10,7 +10,11 @@ const PORT = process.env.PORT || 8000;
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(
+    cors({
+        origin: "https://www.playstockwars.com/",
+    })
+);
 
 // ROUTES //
 app.get("/", (req, res) => {
