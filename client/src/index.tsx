@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://207.246.91.23/";
+axios.defaults.baseURL = "https://api.playstockwars.com/";
 
 ReactDOM.render(
     <React.StrictMode>
