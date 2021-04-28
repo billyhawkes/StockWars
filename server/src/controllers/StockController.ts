@@ -18,8 +18,10 @@ class StockController {
                     .json({ message: "Symbol must be 1-4 chars" });
 
             // Get Cost
+	console.log("Before cost");
             const costPerShare = await costFromSymbol(symbol);
             const totalPrice = amount * costPerShare;
+	console.log("After cost");
 
             // Error: If you cant afford it
             const cash = await getCash(userID);

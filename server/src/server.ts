@@ -1,6 +1,6 @@
 // Imports
-import cors from "cors";
 import express from "express";
+import cors from 'cors';
 const app = express();
 import dotenv from "dotenv";
 dotenv.config({ path: __dirname + "/./../.env" });
@@ -10,11 +10,6 @@ const PORT = process.env.PORT || 8000;
 
 // Middleware
 app.use(express.json());
-app.use(
-    cors({
-        origin: "https://www.playstockwars.com/",
-    })
-);
 
 // ROUTES //
 app.get("/", (req, res) => {
